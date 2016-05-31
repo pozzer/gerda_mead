@@ -1,3 +1,0 @@
-[submodule "AdminLTE"]
-  path = vendor/assets/AdminLTE
-  url = https://github.com/almasaeed2010/AdminLTE
