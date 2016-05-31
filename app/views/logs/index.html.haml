@@ -1,0 +1,47 @@
+/ Default box
+.box
+  = search_form_for @q, url: account_logs_path do |f|
+    .box-header
+      %h3.box-title= page_entries_info @logs
+    .box-body.no-padding
+      = f.input :system_id_eq, label: t("ransack.attributes.log.system_id_eq"), collection: current_account.systems, as: :select, wrapper_html: { class: "col-md-3" }
+      = f.input :resource_resource_type_id_eq, label: t("ransack.attributes.log.resource_resource_type_id_eq"), collection: current_account.resource_types, as: :select, wrapper_html: { class: "col-md-3" }
+      = f.input :status_eq, label: t("ransack.attributes.log.status_eq"), collection: Log.statuses, as: :select, wrapper_html: { class: "col-md-3" }
+      = f.input :log_type_eq, label: t("ransack.attributes.log.log_type_eq"), collection: Log.log_types, as: :select, wrapper_html: { class: "col-md-3" }
+
+      = f.input :created_at_gteq, label: t("ransack.attributes.log.created_at_gteq"), wrapper_html: { class: "col-md-3" }, input_html: {class: "datepicker"}
+      = f.input :created_at_lteq, label: t("ransack.attributes.log.created_at_lteq"), wrapper_html: { class: "col-md-3" }, input_html: {class: "datepicker"}
+      .form-group.col-md-12
+        = f.button :button, class: "pull-right" do
+          %i.fa.fa-search
+          Pesquisar
+    .row
+      .box-tools.pull-right
+        = paginate @logs
+    %table.table
+      %tbody
+        %tr
+          %th{class: "col-xs-1"} #
+          %th= sort_link @q, :system_description, t("activerecord.attributes.log.system")
+          %th= sort_link @q, :resource_resource_type_resource_class_name, t("activerecord.attributes.log.resource")
+          %th= sort_link @q, :status, t("activerecord.attributes.log.status")
+          %th= sort_link @q, :log_type, t("activerecord.attributes.log.log_type")
+          %th= t("activerecord.attributes.log.message")
+          %th= sort_link @q, :created_at, t("activerecord.attributes.log.created_at")
+        - @logs.each do |log|
+          %tr
+            %td= log.id
+            %td= log.system.name
+            %td= log.resource.try(:name)
+            %td
+              = render "parameters_modal", log: log
+              %a.btn{class: "btn-#{class_for_callout(log.status)}", data: {toggle: "modal", target: "#parametersModal#{log.id}"} }
+                = log.status
+            %td= log.log_type
+            %td= log.message
+            %td= l log.created_at
+    .box-body
+      .box-tools.pull-left
+        = render "shared/per_page_btn_group"
+      .box-tools.pull-right
+        = paginate @logs

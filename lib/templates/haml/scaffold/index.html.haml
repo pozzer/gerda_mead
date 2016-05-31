@@ -1,0 +1,46 @@
+/ Default box
+.box
+  .box-header
+    %h3.box-title= page_entries_info @<%= plural_table_name %>
+
+    .box-tools.pull-right
+      = paginate @<%= plural_table_name %>
+
+      .btn-group.pull-right
+        %a.btn.btn-sm.btn-success{href: new_<%= singular_table_name %>_path} Novo
+        %button.btn.btn-sm.btn-success.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+          %span.caret
+          %span.sr-only Toggle Dropdown
+        %ul.dropdown-menu{:role => "menu"}
+          %li
+            %a{:href => "#"} Action
+          %li.divider
+          %li
+            %a{:href => "#"} Action 2
+  / /.box-header
+  .box-body.no-padding
+    %table.table
+      %tbody
+        %tr
+          %th{class: "col-xs-1"} #
+<%- attributes.each do |attribute| -%>
+          %th= t("simple_form.labels.<%= singular_table_name %>.<%= attribute.name %>")
+<% end %>
+          %th Progress
+          %th{class: "col-xs-1"} Ações
+
+        - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+          %tr
+            %td= <%= singular_table_name %>.id
+<%- attributes.each do |attribute| -%>
+            %td= <%= singular_table_name %>.<%= attribute.name %>
+<% end %>
+            %td
+              .progress.progress-xs
+                .progress-bar.progress-bar-danger{:style => "width: 55%"}
+            %td
+              %a{href: edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "badge bg-yellow", title: "Editar"}
+                %i.fa.fa-pencil
+              = link_to <%= singular_table_name %>_path(<%= singular_table_name %>), method: :delete, class: "badge bg-red", title: "Excluir" do
+                %i.fa.fa-times
+  / /.box-body

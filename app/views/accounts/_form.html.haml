@@ -1,0 +1,15 @@
+
+.box.box-primary
+  .box-header.with-border
+    %h3.box-title Nova
+  / /.box-header
+  / form start
+  = simple_form_for @account do |f|
+    .box-body
+      = f.input :description
+    / /.box-body
+    .box-footer
+      = f.button :button do
+        %i.fa.fa-plus
+        Salvar
+      %a{href: accounts_path} Cancelar

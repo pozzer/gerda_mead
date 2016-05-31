@@ -1,0 +1,16 @@
+.box.box-primary
+  .box-header.with-border
+    %h3.box-title Novo
+  / /.box-header
+  / form start
+  = simple_form_for @<%= singular_table_name %> do |f|
+    .box-body
+    <%- attributes.each do |attribute| -%>
+      = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>
+    <%- end -%>
+    / /.box-body
+    .box-footer
+      = f.button :button do
+        %i.fa.fa-plus
+        Salvar
+      %a{href: <%= plural_table_name %>_path} Cancelar

@@ -1,0 +1,30 @@
+/ Default box
+.box
+  .box-header
+    %h3.box-title= page_entries_info @resource_classes
+
+    .box-tools.pull-right
+      = paginate @resource_classes
+
+      .btn-group.pull-right
+        %a.btn.btn-sm.btn-success{href: new_account_resource_class_path(current_account)} Novo
+  / /.box-header
+  .box-body.no-padding
+    %table.table
+      %tbody
+        %tr
+          %th{class: "col-xs-1"} #
+          %th= t("simple_form.labels.resource_class.name")
+          %th{class: "col-xs-1"} Ações
+
+        - @resource_classes.each do |resource_class|
+          %tr
+            %td= resource_class.id
+            %td= resource_class.name
+
+            %td
+              %a{href: edit_account_resource_class_path(current_account, resource_class), class: "badge bg-yellow", title: "Editar"}
+                %i.fa.fa-pencil
+              = link_to account_resource_class_path(current_account, resource_class), method: :delete, class: "badge bg-red", title: "Excluir" do
+                %i.fa.fa-times
+  / /.box-body

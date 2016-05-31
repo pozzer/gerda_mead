@@ -1,0 +1,156 @@
+%header.main-header
+  / Logo
+  %a.logo{:href => root_path}
+    / mini logo for sidebar mini 50x50 pixels
+    %span.logo-mini
+      %b> REN
+    / logo for regular state and mobile devices
+    %span.logo-lg
+      %b> REN
+      dal
+  / Header Navbar: style can be found in header.less
+  %nav.navbar.navbar-static-top{:role => "navigation"}
+    / Sidebar toggle button
+    %a.sidebar-toggle{"data-toggle" => "offcanvas", :href => "#", :role => "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    .navbar-custom-menu
+      %ul.nav.navbar-nav
+        / Messages: style can be found in dropdown.less
+        %li.dropdown.messages-menu
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.fa.fa-envelope-o
+            %span.label.label-success 4
+          %ul.dropdown-menu
+            %li.header You have 4 messages
+            %li
+              / inner menu: contains the actual data
+              %ul.menu
+                %li
+                  / start message
+                  %a{:href => "#"}
+                    .pull-left
+                      %img.img-circle{:alt => "User Image", :src => image_path('dist/img/user2-160x160.jpg')}/
+                    %h4
+                      Support Team
+                      %small
+                        %i.fa.fa-clock-o
+                        5 mins
+                    %p Why not buy a new awesome theme?
+                / end message
+            %li.footer
+              %a{:href => "#"} See All Messages
+        / Notifications: style can be found in dropdown.less
+        %li.dropdown.notifications-menu
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.fa.fa-bell-o
+            %span.label.label-warning 10
+          %ul.dropdown-menu
+            %li.header You have 10 notifications
+            %li
+              / inner menu: contains the actual data
+              %ul.menu
+                %li
+                  %a{:href => "#"}
+                    %i.fa.fa-users.text-aqua
+                    5 new members joined today
+            %li.footer
+              %a{:href => "#"} View all
+        / Tasks: style can be found in dropdown.less
+        %li.dropdown.tasks-menu
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.fa.fa-flag-o
+            %span.label.label-danger 9
+          %ul.dropdown-menu
+            %li.header You have 9 tasks
+            %li
+              / inner menu: contains the actual data
+              %ul.menu
+                %li
+                  / Task item
+                  %a{:href => "#"}
+                    %h3
+                      Design some buttons
+                      %small.pull-right 20%
+                    .progress.xs
+                      .progress-bar.progress-bar-aqua{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "20", :role => "progressbar", :style => "width: 20%"}
+                        %span.sr-only 20% Complete
+                / end task item
+            %li.footer
+              %a{:href => "#"} View all tasks
+        / User Account: style can be found in dropdown.less
+        / %li.dropdown.user.user-menu
+        /   %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        /     %img.user-image{:alt => "User Image", :src => image_path('user2-160x160.jpg')}/
+        /     %span.hidden-xs Alexander Pierce
+        /   %ul.dropdown-menu
+        /     / User image
+        /     %li.user-header
+        /       %img.img-circle{:alt => "User Image", :src => image_path('user2-160x160.jpg')}/
+        /       %p
+        /         Alexander Pierce - Web Developer
+        /         %small Member since Nov. 2012
+        /     / Menu Body
+        /     %li.user-body
+        /       .row
+        /         .col-xs-4.text-center
+        /           %a{:href => "#"} Followers
+        /         .col-xs-4.text-center
+        /           %a{:href => "#"} Sales
+        /         .col-xs-4.text-center
+        /           %a{:href => "#"} Friends
+        /       / /.row
+        /     / Menu Footer
+        /     %li.user-footer
+        /       .pull-left
+        /         %a.btn.btn-default.btn-flat{:href => "#"} Profile
+        /       .pull-right
+        /         %a.btn.btn-default.btn-flat{:href => "#"} Sign out
+        / Control Sidebar Toggle Button
+        %li
+          %a{"data-toggle" => "control-sidebar", :href => "#"}
+            %i.fa.fa-gears
+/ ===============================================
+/ Left side column. contains the sidebar
+%aside.main-sidebar
+  / sidebar: style can be found in sidebar.less
+  %section.sidebar
+    / Sidebar user panel
+    / .user-panel
+    /   .pull-left.image
+    /     %img.img-circle{:alt => "User Image", :src => image_path('user2-160x160.jpg')}/
+    /   .pull-left.info
+    /     %p Alexander Pierce
+    /     %a{:href => "#"}
+    /       %i.fa.fa-circle.text-success
+    /       Online
+    / search form
+    / %form.sidebar-form{:action => "#", :method => "get"}
+    /   .input-group
+    /     %input.form-control{:name => "q", :placeholder => "Search...", :type => "text"}/
+    /     %span.input-group-btn
+    /       %button#search-btn.btn.btn-flat{:name => "search", :type => "submit"}
+    /         %i.fa.fa-search
+    / /.search form
+    / sidebar menu: : style can be found in sidebar.less
+    %ul.sidebar-menu
+      %li.header ACCOUNT NAVIGATION
+      - Account.all.each do |account|
+        %li.treeview{class: (account == current_account ? "active" : "")}
+          %a{:href => "#"}
+            %i.fa.fa-pie-chart
+            %span
+              = account.description
+            %i.fa.fa-angle-left.pull-right
+          %ul.treeview-menu
+            %li{class: controller_name == "systems" ? "active" : ""}
+              = link_to_with_icon([System.model_name.human, "fa fa-desktop"], account_systems_path(account))
+            %li{class: controller_name == "resource_classes" ? "active" : ""}
+              = link_to_with_icon([ResourceClass.model_name.human, "fa fa-keyboard-o"], account_resource_classes_path(account))
+            %li{class: controller_name == "resource_types" ? "active" : ""}
+              = link_to_with_icon([ResourceType.model_name.human, "fa fa-book"], account_resource_types_path(account))
+            %li{class: controller_name == "logs" ? "active" : ""}
+              = link_to_with_icon([Log.model_name.human, "fa fa-list-alt"], account_logs_path(account))
+    / /.sidebar

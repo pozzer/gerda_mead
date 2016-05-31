@@ -1,0 +1,6 @@
+%section.content-header
+  %h1
+    = title
+    - if defined? subtitle
+      %small= subtitle
+  = render 'shared/breadcrumb'

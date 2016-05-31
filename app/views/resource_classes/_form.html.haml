@@ -1,0 +1,14 @@
+.box.box-primary
+  .box-header.with-border
+    %h3.box-title Novo
+  / /.box-header
+  / form start
+  = simple_form_for [current_account, @resource_class] do |f|
+    .box-body
+      = f.input :name
+    / /.box-body
+    .box-footer
+      = f.button :button do
+        %i.fa.fa-plus
+        Salvar
+      %a{href: account_resource_classes_path(current_account)} Cancelar

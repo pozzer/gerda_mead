@@ -1,0 +1,50 @@
+/ Default box
+.box
+  .box-header
+    %h3.box-title= page_entries_info @systems
+
+    .box-tools.pull-right
+      = paginate @systems
+      .btn-group.pull-right
+        %a.btn.btn-sm.btn-success{href: new_account_system_path} Novo
+        %button.btn.btn-sm.btn-success.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+          %span.caret
+          %span.sr-only Toggle Dropdown
+        %ul.dropdown-menu{:role => "menu"}
+          %li
+            %a{:href => "#"} Action
+          %li.divider
+          %li
+            %a{:href => "#"} Action 2
+  / /.box-header
+  .box-body.no-padding
+    %table.table
+      %tbody
+        %tr
+          %th{class: "col-xs-1"} #
+          %th= t("simple_form.labels.system.description")
+          %th= t("simple_form.labels.system.api_url")
+          %th= t("simple_form.labels.system.token")
+
+          %th Progress
+          %th{class: "col-xs-1"} Ações
+
+        - @systems.each do |system|
+          %tr
+            %td= system.id
+            %td= system.description
+            %td= system.api_url
+            %td{class: "update_token_#{system.id}"}
+              = link_to_with_icon ["", "fa fa-recycle"], update_token_account_system_path(current_account, system), method: :put, remote: true, class: "badge bg-light-blue", title: "Invalidar Token Atual", data: {:confirm => "Tem certeza que deseja invalidar o token?"}
+              %span
+                = system.token
+
+            %td
+              .progress.progress-xs
+                .progress-bar.progress-bar-danger{:style => "width: 55%"}
+            %td
+              %a{href: edit_account_system_path(current_account, system), class: "badge bg-yellow", title: "Editar"}
+                %i.fa.fa-pencil
+              = link_to account_system_path(current_account, system), method: :delete, class: "badge bg-red", title: "Excluir" do
+                %i.fa.fa-times
+  / /.box-body

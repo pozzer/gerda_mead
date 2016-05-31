@@ -1,0 +1,14 @@
+Por Páginas:
+.btn-group.btn-group-sm{"data-toggle" => "buttons"}
+  %label.btn.btn-default{class: (params[:per_page] == "50" ? "active" : "" )}
+    = radio_button_tag 'per_page', '50'
+    50
+  %label.btn.btn-default{class: (params[:per_page] == "100" ? "active" : "" )}
+    = radio_button_tag 'per_page', '100'
+    100
+  %label.btn.btn-default{class: (params[:per_page] == "150" ? "active" : "" )}
+    = radio_button_tag 'per_page', '150'
+    150
+  %label.btn.btn-default{class: (params[:per_page] == "200" ? "active" : "" )}
+    = radio_button_tag 'per_page', '200'
+    200

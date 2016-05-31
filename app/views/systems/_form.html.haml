@@ -1,0 +1,15 @@
+.box.box-primary
+  .box-header.with-border
+    %h3.box-title Novo
+  / /.box-header
+  / form start
+  = simple_form_for [current_account, @system] do |f|
+    .box-body
+      = f.input :description
+      = f.input :api_url
+    / /.box-body
+    .box-footer
+      = f.button :button do
+        %i.fa.fa-plus
+        Salvar
+      %a{href: account_systems_path(current_account)} Cancelar

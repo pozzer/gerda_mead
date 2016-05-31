@@ -1,0 +1,37 @@
+.modal{class: "modal-#{class_for_callout(log.status)}", id: "parametersModal#{log.id}"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4.modal-title Parâmetros
+      .modal-body.parameters
+
+        - if log.parameters.any?
+
+          %ul.nav.nav-tabs
+            %li.active
+              %a{"aria-expanded" => "false", "data-toggle" => "tab", :href => "#tab_table#{log.id}"} Table
+            %li
+              %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_ruby#{log.id}"} Ruby
+
+          .tab-content
+            .tab-pane.active{id: "tab_table#{log.id}"}
+              %table.table.table-hover
+                %tr
+                  %th Param
+                  %th Value
+                - log.parameters.each do |key, value|
+                  %tr
+                    %td= key
+                    %td= value
+            .tab-pane{id: "tab_ruby#{log.id}"}
+              %textarea
+                = log.parameters
+
+        - else
+          %h4 Nenhum parametro neste log
+      .modal-footer
+        %button.btn.btn-outline.pull-left{"data-dismiss" => "modal", :type => "button"} Close
+    / /.modal-content
+  / /.modal-dialog
