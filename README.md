@@ -1,6 +1,6 @@
-# rendal
+# Gerda
 
-Esta é uma aplicação em [Rails](http://rubyonrails.org/) utilizado para integrar sistemas sislam
+Esta é uma aplicação em [Rails](http://rubyonrails.org/)
 
 ## Dependências
 
