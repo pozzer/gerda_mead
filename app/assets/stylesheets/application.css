@@ -13,7 +13,7 @@
  *
  *= require bootstrap
  *= require font-awesome
- *= require ioniconssa
+ *= require ionicons
  *= require admin-lte
  *= require_tree .
  *= require_self
