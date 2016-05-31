@@ -6,8 +6,6 @@ gem 'rails', '4.2.5'
 gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 # Use sqlite3 as the database for Active Record
 gem 'pg'
-# Use LESS for stylesheets
-gem 'less-rails', '2.7.1' # github: "metaskills/less-rails"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes

@@ -11,10 +11,9 @@
  * file per style scope.
  *
  *
- **** Path lib/assets/AdminLTE/build
  *= require bootstrap
  *= require font-awesome
- *= require ionicons
+ *= require ioniconssa
  *= require admin-lte
  *= require_tree .
  *= require_self
