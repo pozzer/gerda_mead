@@ -26,7 +26,5 @@ module Responses
       else
         Log.general_error(@current_account.id, @current_system.id, exception.message, exception)
       end
-
-      Rollbar.log('error', exception)
     end
 end

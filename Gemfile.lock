@@ -208,8 +208,6 @@ GEM
       rspec-core (>= 3.0.0)
       rspec-expectations (>= 3.0.0)
       rspec-mocks (>= 3.0.0)
-    rollbar (2.7.1)
-      multi_json
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -335,7 +333,6 @@ DEPENDENCIES
   ransack (~> 1.6.5)
   responders
   resque_spec (= 0.17.0)
-  rollbar (= 2.7.1)
   rspec-activejob (~> 0.6.1)
   rspec-collection_matchers (= 1.1.2)
   rspec-rails (= 3.4.0)

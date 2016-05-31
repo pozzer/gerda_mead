@@ -50,7 +50,6 @@ gem 'sinatra', :require => nil
 gem "validate_url"
 
 gem 'apipie-rails', '0.3.5'
-gem 'rollbar', '2.7.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
