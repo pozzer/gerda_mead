@@ -8,6 +8,7 @@ gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 gem 'pg'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+gem 'sass-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
