@@ -33,7 +33,7 @@ module Rendal
     config.active_record.raise_in_transactional_callbacks = true
 
     # The Active Job adapter must be set to :sidekiq or it will simply use the default
-    config.active_job.queue_adapter = :sidekiq
+    #config.active_job.queue_adapter = :sidekiq
 
     config.autoload_paths += %W(
       #{Rails.root}/app/controllers/api/concerns

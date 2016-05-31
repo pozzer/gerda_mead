@@ -1,4 +1,4 @@
-require 'sidekiq/web'
+#require 'sidekiq/web'
 
 Rails.application.routes.draw do
   apipie
@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     put :update, to: "receives#update"
   end
 
-  mount Sidekiq::Web => '/sidekiq'
+  #mount Sidekiq::Web => '/sidekiq'
 end
