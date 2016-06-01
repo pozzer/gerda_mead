@@ -10,18 +10,19 @@ class AppController < ApplicationController
 
   respond_to :html
 
-  before_action :require_account, :set_breadcrumbs
+  #before_action :require_account, :set_breadcrumbs
+  before_action :set_breadcrumbs
 
   private
 
-    def current_account
-      @current_account ||= Account.find(params[:account_id])  if params[:account_id]
-    end
-    helper_method :current_account
+    #def current_account
+    #  @current_account ||= Account.find(params[:account_id])  if params[:account_id]
+    #end
+    #helper_method :current_account
 
-    def require_account
-      raise NoAccountSelectedException unless current_account
-    end
+    #def require_account
+    #  raise NoAccountSelectedException unless current_account
+    #end
 
 end
 
