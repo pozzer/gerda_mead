@@ -137,7 +137,7 @@
     / sidebar menu: : style can be found in sidebar.less
     %ul.sidebar-menu
       %li.header ACCOUNT NAVIGATION
-      - Account.all.each do |account|
+      -# Account.all.each do |account|
         %li.treeview{class: (account == current_account ? "active" : "")}
           %a{:href => "#"}
             %i.fa.fa-pie-chart
@@ -146,11 +146,11 @@
             %i.fa.fa-angle-left.pull-right
           %ul.treeview-menu
             %li{class: controller_name == "systems" ? "active" : ""}
-              = link_to_with_icon([System.model_name.human, "fa fa-desktop"], account_systems_path(account))
+              =# link_to_with_icon([System.model_name.human, "fa fa-desktop"], account_systems_path(account))
             %li{class: controller_name == "resource_classes" ? "active" : ""}
-              = link_to_with_icon([ResourceClass.model_name.human, "fa fa-keyboard-o"], account_resource_classes_path(account))
+              =# link_to_with_icon([ResourceClass.model_name.human, "fa fa-keyboard-o"], account_resource_classes_path(account))
             %li{class: controller_name == "resource_types" ? "active" : ""}
-              = link_to_with_icon([ResourceType.model_name.human, "fa fa-book"], account_resource_types_path(account))
+              =# link_to_with_icon([ResourceType.model_name.human, "fa fa-book"], account_resource_types_path(account))
             %li{class: controller_name == "logs" ? "active" : ""}
-              = link_to_with_icon([Log.model_name.human, "fa fa-list-alt"], account_logs_path(account))
+              =# link_to_with_icon([Log.model_name.human, "fa fa-list-alt"], account_logs_path(account))
     / /.sidebar
