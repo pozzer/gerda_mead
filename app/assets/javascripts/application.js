@@ -15,9 +15,14 @@
 //= require jquery_ujs
 //= require turbolinks
 
-//= require bootstrap.min
-//= require admin-lte
 
+//= require bootstrap/js/bootstrap.min
+
+//= require plugins/slimScroll/jquery.slimscroll.min
+//= require plugins/datepicker/bootstrap-datepicker
+//= require plugins/datepicker/locales/bootstrap-datepicker.pt-BR
+
+//= require dist/js/app
 
 //= require_tree .
 //= require_self
