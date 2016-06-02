@@ -1,12 +1,8 @@
 class Bottle < ActiveRecord::Base
 
-  has_many :pictures, :as => :attachable, :dependent => :destroy
   has_many :ratings, :as => :rateable, :dependent => :destroy
-	has_many :images, -> { where picture_type: 0 }, as: :attachable, class_name: "Picture", :dependent => :destroy
   has_many :bottle_trades
 	belongs_to :user
-
-  accepts_nested_attributes_for :pictures, :allow_destroy => true, :reject_if => proc { |attributes| attributes['picture'].blank? }
 
   validates :label, :organization_name, :amount, :measure, :abv, :style_list, :type_list, presence: true
 
@@ -19,14 +15,6 @@ class Bottle < ActiveRecord::Base
   scope :with_stock, -> {where("amount > 0")}
 
   paginates_per 20
-
-  def image
-    images.last
-  end
-
-  def image_url
-    image ? image.picture.url(:avatar) : "bottle.jpg"
-  end
 
   def to_s
     "#{type_s} #{label}"
