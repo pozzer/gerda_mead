@@ -6,9 +6,6 @@ class Bottle < ActiveRecord::Base
   has_many :bottle_trades
 	belongs_to :user
 
-	acts_as_taggable
-  acts_as_taggable_on :style, :type
-
   accepts_nested_attributes_for :pictures, :allow_destroy => true, :reject_if => proc { |attributes| attributes['picture'].blank? }
 
   validates :label, :organization_name, :amount, :measure, :abv, :style_list, :type_list, presence: true
@@ -43,7 +40,7 @@ class Bottle < ActiveRecord::Base
   def style_s
     style_list.first
   end
-  
+
   def type_s
     type_list.first
   end
