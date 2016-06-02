@@ -1,0 +1,7 @@
+%h2= @question.title
+%pre
+	= @question.content.html_safe
+%h2 Respostas
+- @question.answers.each do |answer|
+	%pre
+		= answer.content.html_safe

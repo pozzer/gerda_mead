@@ -1,0 +1,32 @@
+/ Default box
+.box
+  .box-header
+    %h3.box-title= page_entries_info @questions
+
+    .box-tools.pull-right
+      = paginate @questions
+
+      .btn-group.pull-right
+        //%a.btn.btn-sm.btn-success{href: new_account_question_path(current_account)} Novo
+  / /.box-header
+  .box-body.no-padding
+    %table.table
+      %tbody
+        %tr
+          %th{class: "col-xs-1"} #
+          %th= t("simple_form.labels.question.title")
+          %th= t("simple_form.labels.question.usuario")
+          %th{class: "col-xs-1"} Ações
+
+        - @questions.each do |question|
+          %tr
+            %td= question.id
+            %td= question.title
+            %td= question.user.full_name
+
+            %td
+              %a{href: question_path(question), class: "badge bg-yellow", title: "Editar"}
+                %i.fa.fa-eye
+              =# link_to account_question_path(current_account, question), method: :delete, class: "badge bg-red", title: "Excluir" do
+              //%i.fa.fa-times
+  / /.box-body

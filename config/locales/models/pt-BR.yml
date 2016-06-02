@@ -1,33 +1,17 @@
 pt-BR:
   models_and_attributes: &models_and_attributes
     models:
-      account:
-        one: Conta
-        other: Contas
-      system:
-        one: Sistema
-        other: Sistemas
-      resource_class:
-        one: Classe
-        other: Classes
-      resource_type:
-        one: Tipo de recurso
-        other: Tipos de recursos
-      log:
-        one: Log
-        other: Logs
+      question:
+        one: Pergunta
+        other: Perguntas
     attributes:
       # system:
       # resource_class:
       # resource_type:
-      log:
-        account: Conta
-        system: Sistema
-        resource: Recurso
-        status: Status
-        log_type: Tipo de Log
-        message: Mensagem
-        created_at: Criado em
+      question:
+        title: Titulo
+        content: Conteudo
+        
   activerecord:
     <<: *models_and_attributes
     errors:

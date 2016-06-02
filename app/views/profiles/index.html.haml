@@ -1,0 +1,30 @@
+/ Default box
+.box
+  .box-header
+    %h3.box-title= page_entries_info @profiles
+
+    .box-tools.pull-right
+      = paginate @profiles
+
+      .btn-group.pull-right
+        //%a.btn.btn-sm.btn-success{href: new_account_profile_path(current_account)} Novo
+  / /.box-header
+  .box-body.no-padding
+    %table.table
+      %tbody
+        %tr
+          %th{class: "col-xs-1"} #
+          %th= t("simple_form.labels.profile.full_name")
+          %th= t("simple_form.labels.profile.full_name")
+          %th{class: "col-xs-1"} Ações
+
+        - @profiles.each do |profile|
+          %tr
+            %td= profile.id
+            %td= profile.full_name
+            %td
+              //%a{href: edit_account_profile_path(current_account, profile), class: "badge bg-yellow", title: "Editar"}
+              //%i.fa.fa-pencil
+              =# link_to account_profile_path(current_account, profile), method: :delete, class: "badge bg-red", title: "Excluir" do
+              //%i.fa.fa-times
+  / /.box-body
