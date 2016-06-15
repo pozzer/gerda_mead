@@ -8,7 +8,7 @@ module Breadcrumbs
 
   private
     def index_breadcrumb(path=nil)
-      add_breadcrumb get_model.model_name.human(count: 2), path
+      #add_breadcrumb get_model.model_name.human(count: 2), path
     end
 
     def new_breadcrumb

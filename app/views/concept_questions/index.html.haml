@@ -1,0 +1,29 @@
+/ Default box
+.box
+  .box-header
+    %h3.box-title= page_entries_info @concept_questions
+
+    .box-tools.pull-right
+      = paginate @concept_questions
+
+      .btn-group.pull-right
+        //%a.btn.btn-sm.btn-success{href: new_account_question_path(current_account)} Novo
+  / /.box-header
+  .box-body.no-padding
+    %table.table
+      %tbody
+        %tr
+          %th{class: "col-xs-1"} #
+          %th Conceito
+          %th Conceito Pai
+          %th Pergunta ID
+          
+        - @concept_questions.each do |concept_question|
+          %tr
+            %td= concept_question.id
+            %td= concept_question.concept.val
+            %td= concept_question.parent_concept.try(:val)
+            %td= concept_question.question.id
+            
+            
+  / /.box-body

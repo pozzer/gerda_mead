@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     put :update, to: "receives#update"
   end
 
+  resources :searchs
+  resources :concept_questions, only: [:index]
+  resources :concepts, only: [:index]
   resources :questions, only: [:index,:show]
   resources :profiles, only: :index
 

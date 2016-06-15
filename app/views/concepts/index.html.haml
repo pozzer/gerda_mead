@@ -1,0 +1,23 @@
+/ Default box
+.box
+  .box-header
+    %h3.box-title= page_entries_info @concepts
+
+    .box-tools.pull-right
+      = paginate @concepts
+
+      .btn-group.pull-right
+        //%a.btn.btn-sm.btn-success{href: new_account_question_path(current_account)} Novo
+  / /.box-header
+  .box-body.no-padding
+    %table.table
+      %tbody
+        %tr
+          %th{class: "col-xs-1"} #
+          %th Conceito
+          
+        - @concepts.each do |concept|
+          %tr
+            %td= concept.id
+            %td= concept.val
+  / /.box-body

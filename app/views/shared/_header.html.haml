@@ -146,10 +146,10 @@
         %ul.treeview-menu
           %li{class: controller_name == "questions" ? "active" : ""}
             = link_to_with_icon([Question.model_name.human, "fa fa-desktop"], questions_path)
-          %li{class: controller_name == "resource_classes" ? "active" : ""}
+          %li{class: controller_name == "profiles" ? "active" : ""}
             = link_to_with_icon([Profile.model_name.human, "fa fa-keyboard-o"], profiles_path)
-          %li{class: controller_name == "resource_types" ? "active" : ""}
-            =# link_to_with_icon([ResourceType.model_name.human, "fa fa-book"], account_resource_types_path(account))
-          %li{class: controller_name == "logs" ? "active" : ""}
-            =# link_to_with_icon([Log.model_name.human, "fa fa-list-alt"], account_logs_path(account))
+          %li{class: controller_name == "concepts" ? "active" : ""}
+            = link_to_with_icon([Concept.model_name.human, "fa fa-keyboard-o"], concepts_path)
+          %li{class: controller_name == "concept_questions" ? "active" : ""}
+            = link_to_with_icon([ConceptQuestion.model_name.human, "fa fa-keyboard-o"], concept_questions_path)
     / /.sidebar

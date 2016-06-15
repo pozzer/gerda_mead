@@ -4,6 +4,12 @@ pt-BR:
       question:
         one: Pergunta
         other: Perguntas
+      concept:
+        one: Conceito
+        other: Conceitos
+      search:
+        one: Busca
+        other: Buscas
     attributes:
       # system:
       # resource_class:
@@ -11,6 +17,10 @@ pt-BR:
       question:
         title: Titulo
         content: Conteudo
+      concept:
+        val: Valor
+      
+
         
   activerecord:
     <<: *models_and_attributes
