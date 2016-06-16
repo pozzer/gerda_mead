@@ -1,19 +1,36 @@
-if (window.Rendal === undefined) window.Rendal = {};
-if (window.Rendal.searchs == undefined) window.Rendal.searchs = {};
+$(function () {
+  $("#birds").keyup(function(){
+	  $.ajax({
+		  url: "/searchs",
+		  data: {valor: $(this).val()},
+		}).done(function(data) {
+			console.log(data.sugestoes);		
+			mount_question(data.questions);
+		});
+	});
+})
 
-window.Rendal.searchs.index = function() {
+function mount_question(questions){
+	$("#question_list li").remove();
+	$(questions).each(function() {
+  	$("#question_list").append('<li><a href="https://nameless-sea-78060.herokuapp.com/questions/'+this.id+'"><span class="tab">'+this.title+'</span></a></li>');
+	});
+}
 
-  var pub = {};
-
-  pub.init = function(){
-		$("#base-material-text").keyup(function(){
-		  $.ajax({
-			  url: "/searchs",
-			  data: {valor: $(this).val()},
-			}).done(function(data) {
-			  console.log(data);
-			});
-  	});
-	}
-  return pub;
-}();
+$(function (){
+	$('#birds').autocomplete({
+    source: function (request, response) {
+      $.getJSON("/searchs?valor=" + request.term, function (data) {
+      	console.log(data);
+        response($.map(data.sugestoes, function (value, key) {
+          return {
+            label: request.term + " " + value,
+            value: request.term + " " + value
+          };
+        }));
+      });
+    },
+    minLength: 2,
+    delay: 100
+	});
+});

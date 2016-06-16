@@ -21,24 +21,13 @@
 //= require plugins/slimScroll/jquery.slimscroll.min
 //= require plugins/datepicker/bootstrap-datepicker
 //= require plugins/datepicker/locales/bootstrap-datepicker.pt-BR
+//= require plugins/typeahead/bloodhound.js
+//= require plugins/typeahead/typeahead.bundle.js
+//= require plugins/typeahead/typeahead.jquery.js
+//= require plugins/jQueryUI/jquery-ui.js
 
 //= require dist/js/app
 
 //= require_tree .
 //= require_self
 
-
-$(function () {
-
-  // init geral do sistema
-  Rendal.actual = {};
-  Rendal.actual.controller = $('body').attr('data-controller');
-  Rendal.actual.action = $('body').attr('data-action');
-  try {
-    Rendal[Rendal.actual.controller][Rendal.actual.action]['init'].call();
-  } catch(e) {
-    debug(e);
-    debug("\"Rendal." + Rendal.actual.controller + "." + Rendal.actual.action + ".init()\" não existe.");
-  }
-
-})

@@ -152,4 +152,6 @@
             = link_to_with_icon([Concept.model_name.human, "fa fa-keyboard-o"], concepts_path)
           %li{class: controller_name == "concept_questions" ? "active" : ""}
             = link_to_with_icon([ConceptQuestion.model_name.human, "fa fa-keyboard-o"], concept_questions_path)
+          %li{class: controller_name == "searchs" ? "active" : ""}
+            = link_to_with_icon(['Buscas', "fa fa-keyboard-o"], searchs_path)
     / /.sidebar
