@@ -17,7 +17,6 @@ class SearchsController < AppController
 							st = title_split[index] + " #{st}"
 							index = index - 1
 						rescue
-							binding.pry
 						end
 					end
 					@sugestoes << st
