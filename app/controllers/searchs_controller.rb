@@ -1,8 +1,8 @@
 class SearchsController < AppController
   def index
   	if params[:valor]
-	  	valor = params[:valor].downcase.split.last 
-			concept = Concept.where(val: valor).last
+	  	valor = params[:valor].downcase.split.last
+	  	concept = Concept.where(val:valor).last
 			if concept
 				@sugestoes = []
 				parent_concepts = ConceptQuestion.where(parent_concept:concept)
@@ -12,7 +12,7 @@ class SearchsController < AppController
 					title_split= question.title.downcase.split
 					index = title_split.index(prox_concept) - 1
 					st = prox_concept
-					while title_split[index] != valor
+					while title_split[index] != concept.val
 						begin
 							st = title_split[index] + " #{st}"
 							index = index - 1
@@ -23,11 +23,7 @@ class SearchsController < AppController
 					st = ""
 				end
 				@questions = ConceptQuestion.where(concept:concept).map(&:question)
-				render json: {sugestoes: @sugestoes, questions: @questions}
-				#concepts =  ConceptQuestion.where(concept:concept).map(&:parent_concept)
-				#ConceptQuestion.where(parent_concept:concept)
-				 
-				#binding.pry
+				render json: {sugestoes: @sugestoes.uniq, questions: @questions}
 			end
 		end
   end
