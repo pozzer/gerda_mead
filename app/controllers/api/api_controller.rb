@@ -15,4 +15,6 @@ class Api::ApiController < ApplicationController
   respond_to :json
 
   before_action :test_params_json, :authenticate
+
+
 end

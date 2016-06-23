@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'questions#index'
 
   namespace :api do
-    get :questions, to: "searchs#questions"
+    get :questions, to: "searchs#questions", via: :options
     #put :update, to: "receives#update"
   end
 

@@ -144,6 +144,7 @@ GEM
     pry-nav (0.2.4)
       pry (>= 0.9.10, < 0.11.0)
     rack (1.6.4)
+    rack-cors (0.4.0)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -327,6 +328,7 @@ DEPENDENCIES
   pry (= 0.10.3)
   pry-doc (= 0.8.0)
   pry-nav (= 0.2.4)
+  rack-cors
   rails (= 4.2.5)
   rails-i18n (~> 4.0.0)
   rails_12factor
