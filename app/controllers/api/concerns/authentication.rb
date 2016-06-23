@@ -32,9 +32,7 @@ Exemplo de Requisição utilizando o comando curl
 
     def authenticate_token
       authenticate_with_http_token do |token, options|
-        @current_system = System.find_by(token: token)
-        @current_account = @current_system.account if @current_system
-        @current_system
+        token == 'token'
       end
     end
 

@@ -1,9 +1,4 @@
-class Api::ReceivesController < Api::ApiController
-  include Finders
-
-  before_action :find_resource_class, :find_resource_type
-  before_action :need_not_find_resource_object, only: [:create]
-  before_action :need_find_resource_object, only: [:update]
+class Api::SearchsController < Api::ApiController
 
   api :GET, '/create', 'POST para criação de recurso'
   desc <<-EOS
@@ -54,18 +49,8 @@ Exemplo de Requisição utilizando o comando curl
 =====Retorno
       {"error": "Resource Type not found"}
   EOS
-  def create
-    resource = Resource.create(resource_type_id: @resource_type.id)
-    resource_object = ResourceObject.create(resource_id: resource.id,
-      system_id: @current_system.id,
-      object_ref: receive_params[:object_ref_id])
-
-    create_perform_sync(resource)
-
-    Log.post_received_success(@current_system.account.id, @current_system.id,
-      "Scheduled jobs for create. Resource Object Created: id #{resource_object.id}", resource.id, receive_params[:object_attributes])
-
-    render json: {"resource_object_id" => resource_object.id}, status: 201
+  def questions
+    render json: {}, status: 201
   end
 
   api :GET, '/update', 'PUT para atualização de recurso'

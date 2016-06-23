@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   root 'questions#index'
 
   namespace :api do
-    post :create, to: "receives#create"
-    put :update, to: "receives#update"
+    get :questions, to: "searchs#questions"
+    #put :update, to: "receives#update"
   end
 
   resources :searchs
