@@ -50,7 +50,12 @@ Exemplo de Requisição utilizando o comando curl
       {"error": "Resource Type not found"}
   EOS
   def questions
-    render json: {}, status: 201
+    retorno = {}
+    if params[:valor]
+      valor = params[:valor].downcase.split.last
+      retorno = Search.new.question(valor)
+    end
+    render json: retorno, status: 201
   end
 
   api :GET, '/update', 'PUT para atualização de recurso'
